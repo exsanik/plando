@@ -1,5 +1,5 @@
 # "Non typical" todo app
-## Teck stack
+## Tech stack
 ### Backend
 - PHP 7.3
 - PHP Slim 4
