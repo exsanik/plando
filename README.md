@@ -10,5 +10,6 @@
 - Redux
 - Material UI
 
-### Devops
+### Others
 - Docker
+- Nginx
