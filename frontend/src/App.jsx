@@ -38,7 +38,7 @@ const App = ({ refreshTokenAction }) => {
         setLoading(false)
       }
     })()
-  }, [refreshTokenAction, loading])
+  }, [refreshTokenAction])
 
   return (
     <>

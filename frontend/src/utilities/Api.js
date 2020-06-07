@@ -9,10 +9,10 @@ class Api {
   constructor(config) {
     this.config = config
     this.instance = axios.create(config)
-    this.instance.interceptors.response.use((response) => {
-      console.log('response', response)
-      return response
-    }, this.handleRefreshToken)
+    this.instance.interceptors.response.use(
+      (response) => response,
+      this.handleRefreshToken
+    )
   }
 
   update(config) {
@@ -43,10 +43,10 @@ class Api {
   }
 
   handleRefreshToken(err) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       const originalReq = err.config
-      if (err.response.status === 401 && !err?.config?._retry) {
-        console.log('originalReq', err.config)
+
+      if (err.response.status === 401 && originalReq?._retry) {
         originalReq._retry = true
 
         const response = this.get(this.config.refreshUrl, this.config).then(
@@ -58,8 +58,7 @@ class Api {
 
         resolve(response)
       }
-
-      return Promise.reject(err)
+      return reject(err)
     })
   }
 
