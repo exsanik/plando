@@ -6,6 +6,7 @@
 - MySql
 
 ### Frontend 
+- JavaScript ES2020
 - React
 - Redux
 - Material UI
