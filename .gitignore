@@ -1,0 +1,16 @@
+# Global
+.*.swp
+.DS_Store
+
+# Application
+web/app/composer.json
+web/app/composer.lock
+web/app/vendor/
+web/app/doc/
+web/app/report/
+data/
+
+.env
+
+# SSL Certs
+etc/ssl/
