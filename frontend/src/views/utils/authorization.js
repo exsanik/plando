@@ -10,28 +10,41 @@ export const Auth = {
   Unlogged: 'UNLOGGED',
 }
 
-export default (auth) => (Wrapped) => {
-  const authorized = ({ logged, confirmed, email, ...props }) => {
+export default auth => Wrapped => {
+  const authorized = ({
+    logged,
+    loaded,
+    error,
+    confirmed,
+    email,
+    ...props
+  }) => {
     const {
       match: { url },
     } = props
 
     let redirect = null
 
-    if (auth === Auth.Shared) redirect = null
-    else if (logged === Auth.Logged && auth !== Auth.Logged) {
-      redirect = '/dashboard'
-    } else if (logged === Auth.Unlogged && auth !== Auth.Unlogged) {
-      redirect = '/'
-    } else redirect = null
+    if (loaded || error) {
+      console.log('auth', auth)
+      console.log('logged', logged)
+      if (auth === Auth.Shared) redirect = null
+      else if (logged === Auth.Logged && auth !== Auth.Logged) {
+        redirect = '/dashboard'
+      } else if (logged === Auth.Unlogged && auth !== Auth.Unlogged) {
+        redirect = '/'
+      } else redirect = null
 
-    if (redirect && url !== redirect) return <Redirect to={redirect} />
+      if (redirect && url !== redirect) return <Redirect to={redirect} />
+    }
 
     return <Wrapped {...props} />
   }
 
-  const mapStateToProps = (state) => ({
+  const mapStateToProps = state => ({
     logged: getLoggedInUser(state) ? Auth.Logged : Auth.Unlogged,
+    loaded: state.userData?.loaded,
+    error: state.userData?.error,
     // confirmed: getUserConfirmed(state),
     email: getUserEmail(state),
   })

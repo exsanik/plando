@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import {
   AppBar,
@@ -22,7 +22,6 @@ import { logOutUser } from '~/state/modules/user'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
     height: 65,
   },
   appbar: {
@@ -51,7 +50,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const Header = ({ hideMenu, hideNav, isLogged, logOutAction }) => {
+const Header = ({
+  hideMenu,
+  hideNav,
+  isLogged,
+  logOutAction,
+  handleMenuOpen,
+}) => {
   const { push } = useRouter()
   const classes = useStyles()
 
@@ -65,6 +70,7 @@ const Header = ({ hideMenu, hideNav, isLogged, logOutAction }) => {
               className={classes.menuButton}
               color="inherit"
               aria-label="menu"
+              onClick={handleMenuOpen}
             >
               <MenuIcon />
             </IconButton>

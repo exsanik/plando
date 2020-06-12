@@ -12,7 +12,7 @@ import { signUpUser } from '~/state/modules/user'
 
 import SuccessImage from '~/static/success.png'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
