@@ -104,12 +104,12 @@ $container->set('db', function ($container) use ($capsule) {
     return $capsule;
 });
 
-$container->set('HomeController', function ($container) {
-    return new \App\Controllers\HomeController($container);
-});
-
 $container->set('UserController', function ($container) {
     return new \App\Controllers\UserController($container);
+});
+
+$container->set('TodoController', function ($container) {
+    return new \App\Controllers\TodoController($container);
 });
 
 $container->set('validator', function ($container) {

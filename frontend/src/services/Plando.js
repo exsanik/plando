@@ -7,17 +7,37 @@ class Plando extends Api {
   /**
    * Create a new user
    */
-  createUser = (user) => this.post('/api/sign-up', { data: user })
+  createUser = user => this.post('/api/sign-up', { data: user })
 
   /**
    * @param {email: string, password: string} user
    */
-  signInUser = (user) => this.post('/api/log-in', { data: user })
+  signInUser = user => this.post('/api/log-in', { data: user })
 
   /**
    * Request to refresh access token
    */
   refreshTokens = () => this.get('/api/refresh-token')
+
+  /**
+   * Get todos
+   */
+  getTodos = () => this.get('/api/todos')
+
+  /**
+   * Create todo
+   */
+  createTodo = todo => this.post('/api/todo', { data: todo })
+
+  /**
+   * Delete todo
+   */
+  deleteTodo = id => this.del(`/api/todo/${id}`)
+
+  /**
+   * Handle Done
+   */
+  handleDone = id => this.patch(`/api/todo/${id}`)
 
   /**
    * Logout user

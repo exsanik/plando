@@ -84,7 +84,8 @@ class UserController extends Controller
     {
         $cookie = FigRequestCookies::get($request, 'refresh_token');
         $decoded = $request->getAttribute("token");
-        RefreshTokens::where(['user_id' => $decoded->user->user_id, 'refresh_token' => $cookie->refresh_token])->delete();
+
+        RefreshTokens::where(['user_id' => $decoded["user_id"], 'refresh_token' => $cookie->getValue()])->delete();
 
         $response = FigResponseCookies::set($response,  SetCookie::create('refresh_token')
             ->withExpires('01-01-1970')

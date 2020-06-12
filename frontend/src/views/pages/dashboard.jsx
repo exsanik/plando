@@ -1,10 +1,20 @@
 import React from 'react'
-import MainLayout from '../layouts/Main'
+import { Box, Typography } from '@material-ui/core'
+
+import MainLayout from '~/views/layouts/Main'
+import FocusOnCard from '~/views/components/FocusOnCard'
+import BigTodoForm from '~/views/components/BigTodoForm'
 
 const Dashboard = () => {
   return (
     <MainLayout>
-      <h1>Dashbord</h1>
+      <FocusOnCard />
+      <Box mt={4} textAlign="center">
+        <Typography variant="subtitle1" gutterBottom>
+          Create new task!
+        </Typography>
+        <BigTodoForm />
+      </Box>
     </MainLayout>
   )
 }

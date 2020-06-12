@@ -1,6 +1,6 @@
 import React from 'react'
-import { TextField as TextInput } from '@material-ui/core'
 import { useField } from 'formik'
+import { TextField as TextInput } from '@material-ui/core'
 
 const TextField = ({ required, readOnly, ...props }) => {
   const [field, meta] = useField(props)
@@ -14,7 +14,7 @@ const TextField = ({ required, readOnly, ...props }) => {
       error={isError}
       helperText={isError ? meta.error : null}
       InputLabelProps={{ required }}
-      inputProps={{ 'data-required': required, readOnly }}
+      inputProps={{ readOnly }}
       {...field}
       {...props}
     />

@@ -8,7 +8,7 @@ const composeEnhancer = composeWithDevTools({})
 export const LOG_OUT_USER = 'user / LOG_OUT_USER'
 
 const rootReducer = (state, action) => {
-  if (action.type === LOG_OUT_USER) state = undefined
+  if (action.type === LOG_OUT_USER) state.userData = null
 
   return combineReducers({
     ...reducers,
